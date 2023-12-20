@@ -58,6 +58,8 @@ Kodbox在计算巢上的费用主要为FC服务费用，FC的费用详情参见�
 | FC 配置      | 服务名称     | fc-kodbox     |
 
 ### 部署步骤
+整体部署整体分为三个大步骤：部署计算巢服务实例 -> 访问fc控制台触发服务运行 -> 为访问kodbox服务配置自定义域名。配置完域名后即可通过域名访问kodbox
+
 
 0. 部署链接
    ![1.png](1.png)
@@ -70,5 +72,8 @@ Kodbox在计算巢上的费用主要为FC服务费用，FC的费用详情参见�
    ![4.png](4.png)
    触发并执行成功后，可以看到kodbox的部署实例
    ![5.png](5.png)
-
-
+3. 为访问kodbox服务，您需要为该函数调用配置自定义域名，详情可参考：https://help.aliyun.com/zh/fc/configure-a-custom-domain-name
+   ![6.png](6.png)
+4. 步骤3完成后，您可进入fc控制台：高级功能——域名管理，复制域名并访问kodbox服务
+    ![7.png](7.png)
+    ![8.png](8.png)
