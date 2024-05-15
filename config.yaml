@@ -3,18 +3,18 @@ Service:
   DeployType: ros
   DeployMetadata:
     ServiceInstanceNameRule:
-      Prefix: kb-fc
+      Prefix: kb-fc-
     SupplierDeployMetadata:
       DeployTimeout: 7200
     TemplateConfigs:
       - Name: FC部署
-        Url: 'templates/template.yaml'
+        Url: 'ros_templates/template.yaml'
         AllowedRegions: []
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
     ShortDescription: kodbox基于FC部署demo
-    Image: 'icons/kodbox_log.png'
+    Image: 'resources/icons/kodbox_log.png'
     Name: Kodbox-FC部署版
   ShareType: Public
   ApprovalType: Manual
