@@ -17,7 +17,7 @@
 用于部署Kodbox。
 
 
-![architecture_1.png](architecture_1.png)
+![architecture_1.png](architecture.png)
 
 ## 服务构建计费说明
 
