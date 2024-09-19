@@ -9,6 +9,7 @@ Service:
     TemplateConfigs:
       - Name: FC部署
         Url: 'ros_templates/template.yaml'
+        ArchitectureDiagramUrl: 'docs/architecture.png'
         AllowedRegions: []
   ServiceType: private
   ServiceInfo:
