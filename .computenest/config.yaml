@@ -14,7 +14,7 @@ Service:
     TemplateConfigs:
       - Name: FC部署
         Url: 'ros_templates/template.yaml'
-        ArchitectureDiagramUrl: 'https://service-info-public.oss-cn-hangzhou.aliyuncs.com/1563457855438522/service-image/architecture.png'
+        ArchitectureDiagramUrl: 'docs/architecture.png'
         AllowedRegions:
           - cn-hangzhou
           - cn-beijing
