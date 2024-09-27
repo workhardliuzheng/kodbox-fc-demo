@@ -150,7 +150,7 @@ Resources:
         Ref: ServiceName
       MemorySize: 3072
       Description: kodbox Function
-      Timeout: 7200
+      Timeout: 600
       Handler: index.handler
       Runtime: custom
       InstanceConcurrency: 1
@@ -167,7 +167,7 @@ Resources:
             - computenest-artifacts-${DeployRegionId}
             - DeployRegionId:
                 Ref: ALIYUN::Region
-        OssObjectName: 1563457855438522/cn-beijing/1684844842065/kodbox.zip
+        OssObjectName: 1563457855438522/cn-beijing/kodbox.zip
   FCKodBoxTrigger:
     Type: ALIYUN::FC::Trigger
     DependsOn:

@@ -2,6 +2,11 @@ Service:
   RegionId: cn-hangzhou
   DeployType: ros
   DeployMetadata:
+    AllowedRegions:
+      - cn-hangzhou
+      - cn-beijing
+      - cn-shanghai
+      - ap-southeast-1
     ServiceInstanceNameRule:
       Prefix: kb-fc-
     SupplierDeployMetadata:
@@ -9,8 +14,12 @@ Service:
     TemplateConfigs:
       - Name: FC部署
         Url: 'ros_templates/template.yaml'
-        ArchitectureDiagramUrl: 'docs/architecture.png'
-        AllowedRegions: []
+        ArchitectureDiagramUrl: 'https://service-info-public.oss-cn-hangzhou.aliyuncs.com/1563457855438522/service-image/architecture.png'
+        AllowedRegions:
+          - cn-hangzhou
+          - cn-beijing
+          - cn-shanghai
+          - ap-southeast-1
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
