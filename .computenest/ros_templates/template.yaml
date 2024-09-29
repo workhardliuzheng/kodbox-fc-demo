@@ -142,7 +142,7 @@ Resources:
     Type: ALIYUN::FC::Function
     DependsOn:
       - FCKodBoxService
-      - FCFunctionInit
+      - Sleep
       - FCInitInvoker
     Properties:
       FunctionName: kodbox
@@ -190,7 +190,7 @@ Resources:
     Type: ALIYUN::FC::FunctionInvoker
     DependsOn:
       - FCKodBoxService
-      - FCFunctionInit
+      - Sleep
     Properties:
       ExecuteVersion: 1
       CheckError: true
@@ -203,6 +203,11 @@ Resources:
         Fn::GetAtt:
           - FCFunctionInit
           - FunctionName
+  Sleep:
+    Type: ALIYUN::ROS::Sleep
+    DependsOn: FCFunctionInit
+    Properties:
+      CreateDuration: 600
 Outputs:
   FCKodboxConsole:
     Value:
