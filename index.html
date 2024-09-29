@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>服务模板说明文档 - Aliyun 计算巢 x kodbox-fc-demo</title>
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="search/main.js"></script>
+  
+
+  
+
+  <script src="js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#_1">服务模板说明文档</a></li>
+              
+                  <li><a href="#_2">服务说明</a></li>
+                  
+              
+                  <li><a href="#_3">服务架构</a></li>
+                  
+              
+                  <li><a href="#_4">服务构建计费说明</a></li>
+                  
+              
+                  <li><a href="#ram">RAM账号所需权限</a></li>
+                  
+              
+                  <li><a href="#_5">服务实例计费说明</a></li>
+                  
+              
+                  <li><a href="#_6">服务实例部署流程</a></li>
+                  
+                      <li class="li-h3"><a href="#_7">部署参数说明</a></li>
+                  
+                      <li class="li-h3"><a href="#_8">部署步骤</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="_1">服务模板说明文档</h1>
+<h2 id="_2">服务说明</h2>
+<p><a href="https://kodcloud.com/product/kodbox/">Kodbox</a>是一款开源的在线文件管理系统。它可以帮助用户在本地或者服务器上搭建一个私有的云存储平台，
+使用户可以通过浏览器访问和管理自己的文件。Kodbox提供了丰富的功能，包括文件上传、下载、预览、分享、权限管理等。
+同时，Kodbox支持多种文件格式的在线预览，包括文档、图片、音视频等。Kodbox基于web技术，使用简单方便，
+适用于个人用户或者小型团队共享文件。</p>
+<p>快速上手流程，本示例对应的Git仓库地址：<a href="https://github.com/aliyun-computenest/kodbox-fc-demo">kodbox-fc-demo</a>。</p>
+<p>本示例会自动的构建计算巢服务，创建过程大约持续5分钟，当服务变成待提交后构建成功。</p>
+<h2 id="_3">服务架构</h2>
+<p>本服务基于<a href="https://help.aliyun.com/zh/fc/">函数计算FC</a>部署Kodbox。服务所属实例会创建一个NAS服务，并将其挂载到一个fc服务上。同时会创建一个fc的function，
+用于部署Kodbox。</p>
+<p><img alt="architecture_1.png" src="architecture.png" /></p>
+<h2 id="_4">服务构建计费说明</h2>
+<p>测试本服务构建无需任何费用，创建服务实例涉及的费用参考服务实例计费说明。</p>
+<h2 id="ram">RAM账号所需权限</h2>
+<p>本服务需要对ECS、VPC等资源进行访问和创建操作，若您使用RAM用户创建服务实例，需要在创建服务实例前，对使用的RAM用户的账号添加相应资源的权限。添加RAM权限的详细操作，请参见<a href="https://help.aliyun.com/document_detail/121945.html">为RAM用户授权</a>。
+所需权限如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>权限策略名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunECSFullAccess</td>
+<td>管理云服务器服务（ECS）的权限</td>
+</tr>
+<tr>
+<td>AliyunVPCFullAccess</td>
+<td>管理专有网络（VPC）的权限</td>
+</tr>
+<tr>
+<td>AliyunROSFullAccess</td>
+<td>管理资源编排服务（ROS）的权限</td>
+</tr>
+<tr>
+<td>AliyunRDSFullAccess</td>
+<td>管理云数据库服务(RDS)的权限</td>
+</tr>
+<tr>
+<td>AliyunSLBFullAccess</td>
+<td>管理负载均衡服务(SLB)的权限</td>
+</tr>
+<tr>
+<td>AliyunCloudMonitorFullAccess</td>
+<td>管理云监控（CloudMonitor）的权限</td>
+</tr>
+<tr>
+<td>AliyunComputeNestUserFullAccess</td>
+<td>管理计算巢服务（ComputeNest）的用户侧权限</td>
+</tr>
+<tr>
+<td>AliyunComputeNestSupplierFullAccess</td>
+<td>管理计算巢服务（ComputeNest）的服务商侧权限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">服务实例计费说明</h2>
+<p>Kodbox在计算巢上的费用主要为FC服务费用，FC的费用详情参见：<a href="https://help.aliyun.com/zh/fc/product-overview/billing-overview">FC服务费用说明</a>。</p>
+<p>预估费用在创建实例时可实时看到。</p>
+<h2 id="_6">服务实例部署流程</h2>
+<h3 id="_7">部署参数说明</h3>
+<table>
+<thead>
+<tr>
+<th>参数组</th>
+<th>参数项</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可用区配置</td>
+<td>可用区</td>
+<td>cn-hangzhou-a</td>
+</tr>
+<tr>
+<td>基础资源配置（必填）</td>
+<td>专有网络实例ID</td>
+<td>vpc-xxxx</td>
+</tr>
+<tr>
+<td>基础资源配置（必填）</td>
+<td>交换机实例ID</td>
+<td>vsw-xxxx</td>
+</tr>
+<tr>
+<td>基础资源配置（必填）</td>
+<td>安全组ID</td>
+<td>sg-xxxxx</td>
+</tr>
+<tr>
+<td>FC 配置</td>
+<td>服务名称</td>
+<td>fc-kodbox</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">部署步骤</h3>
+<p>整体部署整体分为三个大步骤：部署计算巢服务实例 -&gt; 访问fc控制台触发服务运行 -&gt; 为访问kodbox服务配置自定义域名。配置完域名后即可通过域名访问kodbox。</p>
+<ol>
+<li>
+<p>部署链接
+   <img alt="1.png" src="1.png" /></p>
+</li>
+<li>
+<p>查看服务实例。服务实例创建成功后，部署时间大约需要6分钟。部署完成后，页面上可以看到对应的服务实例。
+   <img alt="2.png" src="2.png" /></p>
+</li>
+<li>
+<p>通过服务实例访问FC，可以看到FC对应的http触发器，此时用户可以通过发送HTTP请求触发部署kodbox的函数执行。
+   <img alt="3.png" src="3.png" />
+   <img alt="4.png" src="4.png" />
+   触发并执行成功后，可以看到kodbox的部署实例。
+   <img alt="5.png" src="5.png" /></p>
+</li>
+<li>为访问kodbox服务，您需要为该函数调用配置自定义域名，详情可参考：https://help.aliyun.com/zh/fc/configure-a-custom-domain-name
+   <img alt="6.png" src="6.png" /></li>
+<li>步骤3完成后，您可进入fc控制台：高级功能——域名管理，复制域名并访问kodbox服务。
+    <img alt="7.png" src="7.png" />
+    <img alt="8.png" src="8.png" /></li>
+</ol>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.6.1
+  Docs Build Date UTC : 2024-09-29 01:57:03.660940+00:00
+  -->
+</body>
+</html>
